@@ -1,18 +1,17 @@
 <h1 align="center" id="title">Map Store</h1>
 
-<p id="description">Map Store is a full-stack MERN application that allows users to choose a location on a map capture the visible region and apply it as a texture to a 3D cuboid using BabylonJS. The application demonstrates proficiency in frontend development with ReactJS backend development with Node.js, Express.js and database management with MongoDB. Additionally the app incorporates advanced features like caching user authentication and annotation functionality.</p>
+<p id="description">Map Store is a full-stack MERN application that allows users to choose a location on a map, capture the visible region and apply it as a texture to a 3D cuboid using BabylonJS. The application demonstrates proficiency in frontend development with ReactJS backend development with Node.js, Express.js and database management with MongoDB. Additionally the app incorporates advanced features like caching user authentication and annotation functionality.</p>
 
 <h2>🚀 Demo</h2>
 
 [https://map-store.netlify.app/](https://map-store.netlify.app/)
 
-  
-  
 <h2>🧐 Features</h2>
 
 Here're some of the project's best features:
 
 ### Frontend:
+
 - **Map Integration**: Users can choose a location on the map using Google Maps.
 - **Region Display**: The app displays the visible region on the map.
 - **Capture Map Image**: A button allows users to capture the visible map region as an image.
@@ -22,9 +21,10 @@ Here're some of the project's best features:
 - **Maps Download**: Option to Download the saved map in png format.
 - **Users Dashboarding**: Dashboard to create & view of Users along with password change page.
 - **Responsive UI**: The app is designed to be responsive and user-friendly.
-<br />
+  <br />
 
 ### Backend:
+
 - **Save Map Data**: Captured images and map data are saved to a MongoDB database via a Node.js server.
 - **Retrieve Map Data**: Endpoints are provided to retrieve and display saved map data and images.
 - **State Management**: Users can save and reload the state of the map captures.
@@ -32,7 +32,6 @@ Here're some of the project's best features:
 - **Caching**: Implemented a caching mechanism to improve the performance of frequently accessed map data.
 - **User Management**: Users can be created with password setting & password changing features.
 - **JWT Authentication**: JWT Authentication with Redis storage of tokens & 30 minutes Idle token removal management.
-
 
 <br />
 <br />
@@ -58,29 +57,30 @@ npm run start:dev //(if nodemon is available with you then use "npm run start:de
 npm start
 ```
 
-  
   <br />
 <br />
 <h2>💻 Built with</h2>
 
 Technologies used in the project:
 
-*   Frontend:- ReactJS  Google Maps API BabylonJS SASS & Material-UI
-*   Backend:- Node.js Express.js & Mongoose
-*   Database:- MongoDB
-*   Caching:- Redis
-*   Authentication:- JSON Web Tokens (JWT)
-*   Deployment:- Netlify (Frontend) & VPS/Server with HTTPS (Backend MongoDB & Redis via Docker Containerizations)
+- Frontend:- ReactJS Google Maps API BabylonJS SASS & Material-UI
+- Backend:- Node.js Express.js & Mongoose
+- Database:- MongoDB
+- Caching:- Redis
+- Authentication:- JSON Web Tokens (JWT)
+- Deployment:- Netlify (Frontend) & VPS/Server with HTTPS (Backend MongoDB & Redis via Docker Containerizations)
 
 <br />
 <br />
 
 ## API Endpoints
+
 The API wise break up has been provided with Swagger API documentation in the link of http://92.205.63.217:40000/api-docs/#/
 <br />
 <br />
 
 ## Advanced Redis Integration for Enhanced Performance and Security
+
 <br />
 
 ## Overview
@@ -89,6 +89,7 @@ In this application, Redis is strategically integrated to optimize both security
 <br />
 
 ## Redis Use Cases
+
 <br />
 
 ### 1. Token Management and Session Security
@@ -96,13 +97,15 @@ In this application, Redis is strategically integrated to optimize both security
 **Purpose**: To enhance security and manage user sessions effectively.
 
 **Mechanism**:
+
 - **Token Storage**: Upon user authentication, a unique token is generated and stored in Redis as a key-value pair with the `userEmail` as the key and the token as the value.
 - **Session Timeout Handling**: Alongside the token, a timestamp is stored to track the last activity time of the user.
 - **Request Validation**: For every incoming request, the application checks the timestamp stored in Redis. If the time difference between the current request and the stored timestamp exceeds 30 minutes, the token is invalidated, effectively logging the user out.
 - **Continuous Time Update**: With each valid request, the timestamp is updated to the current time, ensuring active sessions remain valid.
-<br />
+  <br />
 
 **Benefits**:
+
 - **Enhanced Security**: Automatically logs users out after a period of inactivity, reducing the risk of unauthorized access.
 - **Efficient Resource Utilization**: Tokens are only stored for active sessions, reducing memory usage.
 
@@ -117,7 +120,7 @@ In this application, Redis is strategically integrated to optimize both security
 - **Frequency Tracking**: Each time a user accesses a map view, a counter in MongoDB is incremented to track the frequency of access.
 - **Data Caching**: The most frequently accessed map views (based on the MongoDB counter) are stored in Redis. The cached data includes the base64 image and the corresponding map metadata.
 - **Quick Retrieval**: When a user accesses a frequently viewed map, the data is served from Redis instead of querying MongoDB, significantly reducing latency.
-<br />
+  <br />
 
 **Benefits**:
 
@@ -127,7 +130,6 @@ In this application, Redis is strategically integrated to optimize both security
 <br />
 <br />
 <br />
-
 
 ## Identifying Top Three Most Frequently Captured Regions
 
@@ -146,7 +148,6 @@ To achieve this, we utilized MongoDB's powerful aggregation framework. The key s
    - The map data is grouped based on the latitude (`lat`), longitude (`lng`), and zoom level (`zoom`).
    - For each unique combination of these fields, a `count` field is calculated by summing the occurrences.
 
-
 <br />
 
 **Sorting**:
@@ -157,7 +158,6 @@ The results from the grouping stage are then sorted in descending order based on
 **Limiting**:
 
 Finally, the aggregation pipeline is limited to return only the top three results, providing the most frequently captured regions.
-
 
 **Benefits**:
 
