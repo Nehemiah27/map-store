@@ -29,7 +29,7 @@ const router = express.Router();
  *       500:
  *         description: Server error
  */
-router.post("/set-default-user", authMiddleware, setDefaultUser);
+router.post("/set-default-user", setDefaultUser);
 
 /**
  * @swagger
