@@ -1,0 +1,6 @@
+export const DEFAULT_USER_EMAIL = "testing@testing.com",
+  DEFAULT_USER_PASSWORD = "Qwerty@1234",
+  DEFAULT_USER_FIRST_NAME = "Testing",
+  DEFAULT_USER_LAST_NAME = "User",
+  ENCRYPTION_SALT_ROUNDS = 10,
+  TOKEN_EXPIRY_TIME = 30;

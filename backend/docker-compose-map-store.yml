@@ -1,0 +1,51 @@
+version: "3"
+
+services:
+  map-store-rest-app:
+    image: map-store-rest-api-image
+    stdin_open: true
+    command: node index.js
+    env_file:
+      - ".production.env"
+    ports:
+      - "39011:443"
+    networks:
+      - map-store
+    depends_on:
+      - db-server-map-store
+      - redis-server-map-store
+    restart: "unless-stopped"
+
+  db-server-map-store:
+    image: mongo:4.4
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: map_store_admin
+      MONGO_INITDB_ROOT_PASSWORD: 2b0YlZxL79D
+      MONGO_INITDB_DATABASE: admin
+    ports:
+      - "39012:27017"
+    networks:
+      - map-store
+    volumes:
+      - db-storage-map-store:/data/db
+      - ./docker-entrypoint-initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    restart: "unless-stopped"
+
+  redis-server-map-store:
+    image: redis:6.2.5
+    volumes:
+      - redis-storage-map-store:/data
+    ports:
+      - "6399:6379"
+    networks:
+      - map-store
+    restart: "unless-stopped"
+
+networks:
+  map-store:
+    driver: bridge
+volumes:
+  db-storage-map-store:
+    driver: local
+  redis-storage-map-store:
+    driver: local
