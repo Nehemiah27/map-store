@@ -8,7 +8,7 @@ services:
     env_file:
       - ".production.env"
     ports:
-      - "39011:443"
+      - "40000:443"
     networks:
       - map-store
     depends_on:
@@ -23,7 +23,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: 2b0YlZxL79D
       MONGO_INITDB_DATABASE: admin
     ports:
-      - "39012:27017"
+      - "40001:27017"
     networks:
       - map-store
     volumes:
@@ -36,7 +36,7 @@ services:
     volumes:
       - redis-storage-map-store:/data
     ports:
-      - "6399:6379"
+      - "40002:6379"
     networks:
       - map-store
     restart: "unless-stopped"
