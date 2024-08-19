@@ -8,6 +8,7 @@ export const post = async (url, data, config = {}) => {
       baseURL: BASE_URL,
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
         Authorization: `Bearer ${authToken}`,
       },
     });
