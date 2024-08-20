@@ -6,6 +6,11 @@
 
 [https://map-store.netlify.app/](https://map-store.netlify.app/)
 
+- **Walkthrough Video**: https://www.loom.com/share/c34238bd54464bd3b966d7a2e8367816
+- **Demo Credentials**:
+- user: testing@testing.com
+- password: Qwerty@1234
+
 <h2>🧐 Features</h2>
 
 Here're some of the project's best features:
