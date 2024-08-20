@@ -163,3 +163,9 @@ Finally, the aggregation pipeline is limited to return only the top three result
 
 - **Efficient Data Processing**: This aggregation method is designed to efficiently process large datasets, making it scalable as the volume of map data increases.
 - **Actionable Insights**: By identifying the top three most captured regions, this endpoint can offer valuable insights into user behavior and preferences.
+
+
+
+## Repo Cloning & Production Access
+- **Cloning**: To Clone the repo, hit the URL in bash with command as git clone https://github.com/Nehemiah27/map-store.git
+- **Production**: To Access production Database, hit the URL "mongodb://map_store_db_owner:i5u3h1PHb61@92.205.63.217:40001/map_store" in the Mongoose Compass
